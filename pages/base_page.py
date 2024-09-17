@@ -20,7 +20,7 @@ class BasePage:
         return self.wait_about_element_located(locator).is_displayed()
 
     def check_element_click(self,locator):
-        return WebDriverWait(self.driver, 15).until(ec.visibility_of_element_located(locator))
+        return WebDriverWait(self.driver, 15).until(ec.element_to_be_clickable(locator))
 
     def click_on_btn(self,locator):
         self.check_element_click(locator)
