@@ -30,8 +30,9 @@ class TestMainPage:
         dzen_page = DzenPage(driver)
         main_page.click_yandex_logo()
         main_page.switch_to_the_new_tab()
-        WebDriverWait(driver, 10).until(ec.url_to_be(Urls.DZEN_URL))
-        assert dzen_page.check_element_main_btn
+        dzen_page.wait_about_element_located(DzenLocators.dzen_find_btn)
+        current_url = main_page.get_current_url()
+        assert current_url == Urls.DZEN_URL and dzen_page.check_element_main_btn
 
     @allure.title('Test "Answers to FAQ compares to expected answers text"')
     @allure.description('''1)Scroll to FAQ;
